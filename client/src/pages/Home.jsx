@@ -23,7 +23,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/courses')
+    axios.get('https://courselelo.onrender.com/api/courses')
       .then(res => { setCourses(res.data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);

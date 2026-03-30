@@ -10,7 +10,7 @@ function ResetPassword() {
   const handleReset = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/reset-password/${id}/${token}`, { password });
+      const res = await axios.post(`https://courselelo.onrender.com/api/auth/reset-password/${id}/${token}`, { password });
       setMessage(res.data.msg);
     } catch (err) {
       setMessage(err.response?.data?.msg || 'Error resetting password.');

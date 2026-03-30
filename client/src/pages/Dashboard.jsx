@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // ─── Helpers ────────────────────────────────────────────────
-const API = 'http://localhost:5000/api';
+const API = 'https://courselelo.onrender.com/api';
 const authHeader = () => ({ Authorization: `Bearer ${localStorage.getItem('token')}` });
 
 function getInitials(name = '') {

@@ -16,11 +16,11 @@ function CourseDetail() {
 
     const fetchCourseAndAccess = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/courses/${id}`);
+        const res = await axios.get(`https://courselelo.onrender.com/api/courses/${id}`);
         setCourse(res.data);
         if (token) {
           try {
-            const check = await axios.get(`http://localhost:5000/api/payments/check/${id}`, {
+            const check = await axios.get(`https://courselelo.onrender.com/api/payments/check/${id}`, {
               headers: { Authorization: `Bearer ${token}` }
             });
             setHasAccess(check.data.hasAccess);
@@ -48,7 +48,7 @@ function CourseDetail() {
     if (!token) return window.location.href = '/login';
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/payments/create-razorpay-order',
+        'https://courselelo.onrender.com/api/payments/create-razorpay-order',
         { courseId: course._id, title: course.title, price: course.price },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -69,7 +69,7 @@ function CourseDetail() {
         order_id: res.data.orderId,
         handler: async (response) => {
           // Pass the payment ID so the backend can trigger instructor payout
-          await fetch('http://localhost:5000/api/payments/verify-enrollment', {
+          await fetch('https://courselelo.onrender.com/api/payments/verify-enrollment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
             body: JSON.stringify({ courseId: course._id, razorpayPaymentId: response.razorpay_payment_id }),

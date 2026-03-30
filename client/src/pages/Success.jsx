@@ -18,7 +18,7 @@ function Success() {
       if (!token) { setStatus('error'); setMessage('You must be logged in.'); return; }
 
       try {
-        await axios.post('http://localhost:5000/api/payments/verify-enrollment', { courseId }, {
+        await axios.post('https://courselelo.onrender.com/api/payments/verify-enrollment', { courseId }, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStatus('success');

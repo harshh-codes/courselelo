@@ -10,7 +10,7 @@ function ForgotPassword() {
   const handleForgot = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await axios.post('https://courselelo.onrender.com/api/auth/forgot-password', { email });
       setMessage(res.data.msg);
       // Because we're using a dummy local Ethereal account, we give the user the magic link here so they can click it
       if (res.data.testEmailUrl) setTestUrl(res.data.testEmailUrl);
